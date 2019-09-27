@@ -1,0 +1,36 @@
+openapi: 3.0.0
+
+# This is your document metadata
+info:
+  version: "0.0.1"
+  title: cameraIamgeFetcher
+  description: |
+    fetches image from camera
+
+servers:
+  - url: http://camera.localhost:3000/v1
+
+# Describe your paths here
+paths:
+  # This is a path endpoint. Change it.
+  /camera:
+    # This is a HTTP operation
+   get:
+      summary: Returns image from camera
+      
+      parameters:
+        - name: cameraFetchFrequency
+          in: query
+          description: The user name for login
+          required: true
+          schema:
+            type: string
+            
+      responses:
+        200:
+          description: ok
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
